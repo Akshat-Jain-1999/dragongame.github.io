@@ -1,6 +1,7 @@
 score = 0;
 cross = true;
-
+refresh = document.querySelector('.refresh');
+refresh.style.visibility='hidden';
 audio = new Audio('music.mp3');
 audiogo = new Audio('gameover.mp3');
 setTimeout(() => {
@@ -48,6 +49,7 @@ setInterval(() => {
         gameOver.innerHTML = "OOPS!!...Game Over";
         obstacle.classList.remove('obstacleAni');
         dino.classList.add('fallAni');
+        refresh.style.visibility='visible';
         setInterval(() =>{
             dino.style.opacity=0;
             dino.style.left=0+"px";
@@ -67,7 +69,7 @@ setInterval(() => {
         }, 1000);
         setTimeout(() => {
             aniDur = parseFloat(window.getComputedStyle(obstacle, null).getPropertyValue('animation-duration'));
-            if(aniDur>2.5)
+            if(aniDur>2)
             newDur = aniDur - 0.1;
             obstacle.style.animationDuration = newDur + 's';
             console.log('New animation duration: ', newDur)
